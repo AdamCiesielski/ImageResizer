@@ -1,0 +1,7 @@
+D:\_GitHubRepos\ImageResizer\ImageResizer\ImageResizer\bin\Debug\ImageResizer.exe.config
+D:\_GitHubRepos\ImageResizer\ImageResizer\ImageResizer\bin\Debug\ImageResizer.exe
+D:\_GitHubRepos\ImageResizer\ImageResizer\ImageResizer\bin\Debug\ImageResizer.pdb
+D:\_GitHubRepos\ImageResizer\ImageResizer\ImageResizer\obj\Debug\ImageResizer.csproj.AssemblyReference.cache
+D:\_GitHubRepos\ImageResizer\ImageResizer\ImageResizer\obj\Debug\ImageResizer.csproj.CoreCompileInputs.cache
+D:\_GitHubRepos\ImageResizer\ImageResizer\ImageResizer\obj\Debug\ImageResizer.exe
+D:\_GitHubRepos\ImageResizer\ImageResizer\ImageResizer\obj\Debug\ImageResizer.pdb
