@@ -15,7 +15,9 @@ namespace ImageResizer
             string FileToScallPath;
             string NoScallingPath;
             string FileName;
-
+            string StorageDirectory;
+            string[] dirs;
+            string LogFilePath= "";
             List<ScallingConfig> ScallingPaths = new List<ScallingConfig>();
 
             using (StreamReader file = new StreamReader("../../config.txt"))
@@ -30,9 +32,25 @@ namespace ImageResizer
                 file.Close();
             }
 
+            
+            StorageDirectory = FileToScallPath + DateTime.Now.ToString("yyyy-MM-dd   HH_mm")+ '\\';
+            
+
 
             //Directory.GetFiles("","*.jpg");
-            foreach(string filePath in Directory.GetFiles(FileToScallPath, "*.jpg"))
+            dirs = Directory.GetFiles(FileToScallPath, "*.jpg");
+
+            if (dirs.Length > 0)
+            {
+                Directory.CreateDirectory(StorageDirectory);
+                LogFilePath = StorageDirectory + "_log.txt";
+                if (!File.Exists(LogFilePath))
+                {
+                    using (StreamWriter sw = File.CreateText(LogFilePath)) ;
+                }
+;           }
+
+            foreach (string filePath in dirs)
             {
                 Console.WriteLine(filePath.Split('\\').Last());
                 FileName = filePath.Split('\\').Last();
@@ -41,12 +59,17 @@ namespace ImageResizer
                 {
                     foreach(ScallingConfig scallingConfig in ScallingPaths)
                     {
-                        ScaleImage(bitmap, scallingConfig).Save(scallingConfig.directPath + scallingConfig.FileSufix + FileName.Replace(".jpg",scallingConfig.FileSufix+".jpg")) ;
-                        
+                        ScaleImage(bitmap, scallingConfig).Save(scallingConfig.directPath + scallingConfig.FileSufix + FileName.Replace(".jpg",scallingConfig.FileSufix+".jpg")) ;   
                     }
                     bitmap.Dispose();
+                    using (StreamWriter sw = File.AppendText(LogFilePath))
+                    {
+                        sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+'\t'+FileName+ '\t' +FileName.Split('_')[0]);
+                    }
                 }
-                Directory.Move(filePath, NoScallingPath+FileName);
+                File.Copy(filePath, NoScallingPath + FileName,true);
+                
+                Directory.Move(filePath, StorageDirectory+ FileName);
             }
 
             Console.ReadLine();
