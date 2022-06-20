@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ImageResizer
 {
-    class ScallingConfig
+    class ScalingConfig
     {
         public string directPath;
         public int width;
         public int height;
         public string FileSufix;
 
-        public ScallingConfig(string LineFromConfig)
+        public ScalingConfig(string LineFromConfig)
         {
             string[] tmp = LineFromConfig.Split(';');
 
