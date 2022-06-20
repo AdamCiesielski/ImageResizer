@@ -12,3 +12,10 @@ D:\_GitHubRepos\ImageResizer\ImageResizer\obj\Debug\ImageResizer.csproj.Assembly
 D:\_GitHubRepos\ImageResizer\ImageResizer\obj\Debug\ImageResizer.csproj.CoreCompileInputs.cache
 D:\_GitHubRepos\ImageResizer\ImageResizer\obj\Debug\ImageResizer.exe
 D:\_GitHubRepos\ImageResizer\ImageResizer\obj\Debug\ImageResizer.pdb
+C:\Users\przed\Documents\GitHub\ImageResizer\ImageResizer\bin\Debug\ImageResizer.exe.config
+C:\Users\przed\Documents\GitHub\ImageResizer\ImageResizer\bin\Debug\ImageResizer.exe
+C:\Users\przed\Documents\GitHub\ImageResizer\ImageResizer\bin\Debug\ImageResizer.pdb
+C:\Users\przed\Documents\GitHub\ImageResizer\ImageResizer\obj\Debug\ImageResizer.csprojAssemblyReference.cache
+C:\Users\przed\Documents\GitHub\ImageResizer\ImageResizer\obj\Debug\ImageResizer.csproj.CoreCompileInputs.cache
+C:\Users\przed\Documents\GitHub\ImageResizer\ImageResizer\obj\Debug\ImageResizer.exe
+C:\Users\przed\Documents\GitHub\ImageResizer\ImageResizer\obj\Debug\ImageResizer.pdb

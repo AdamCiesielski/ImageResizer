@@ -48,7 +48,7 @@ namespace ImageResizer
                 }
             }
 
-            ScaleDiredImages(dirs);
+            ScaleDiredImages(dirs, true);
         }
 
         private void ScaleDiredImages(string[] dirs)
@@ -87,13 +87,33 @@ namespace ImageResizer
 
                     using (Bitmap bitmap = new Bitmap(filePath))
                     {
-                        //int ratio ScalingPaths.ElementAt(0).height/ ScalingPaths.ElementAt(0).width;
+                        Bitmap tmp;
+                        double ratio = (double)ScalingPaths.ElementAt(0).height / ScalingPaths.ElementAt(0).width;
+                        Console.WriteLine(ratio);
+
+                        if (bitmap.Height / bitmap.Width > ratio)
+                        {
+                            tmp = new Bitmap((int)(bitmap.Width / (ratio / ((double)bitmap.Height / bitmap.Width))), bitmap.Height);
+                        }
+                        else
+                        {
+                            tmp = new Bitmap(bitmap.Width, (int)(bitmap.Height * (ratio / ((double)bitmap.Height / bitmap.Width))));
+                        }
+
+                        using (var graphics = Graphics.FromImage(tmp))
+                        {
+                            using (SolidBrush brush = new SolidBrush(Color.FromArgb(255, 255, 255)))
+                            {
+                                graphics.FillRectangle(brush, 0, 0, tmp.Width, tmp.Height);
+                            }
+                            graphics.DrawImage(bitmap, (tmp.Width - bitmap.Width) / 2, (tmp.Height - bitmap.Height) / 2, bitmap.Width, bitmap.Height);
+                        }
 
                         foreach (ScalingConfig scalingConfig in ScalingPaths)
                         {
-                            //ScaleImage(bitmap, scalingConfig).Save(scalingConfig.directPath + scalingConfig.FileSufix + FileName.Replace(".jpg", scalingConfig.FileSufix + ".jpg"));
+                            ScaleImage(tmp, scalingConfig).Save(scalingConfig.directPath + scalingConfig.FileSufix + FileName.Replace(".jpg", scalingConfig.FileSufix + ".jpg"));
+                            // TO DO
 
-                            
                         }
                         bitmap.Dispose();
                         using (StreamWriter sw = File.AppendText(LogFilePath))
@@ -109,7 +129,7 @@ namespace ImageResizer
             else
             {
                 ScaleDiredImages(dirs);
-            }            
+            }
         }
 
         private Bitmap ScaleImage(Bitmap bmp, int maxWidth, int maxHeight)
